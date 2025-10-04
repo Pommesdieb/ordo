@@ -1,15 +1,17 @@
+from contextlib import asynccontextmanager
 from fastapi import Depends, FastAPI, HTTPException
 from sqlmodel import Session, select
 
 from app.db import get_session, init_db
 from app.models import Task, TaskCreate, TaskRead, TaskUpdate
 
-app = FastAPI(title="Ordo - Digital Life Companion")
 
-
-Lifespan (asynccontextmanager)
-def on_startup():
+@asynccontextmanager
+async def lifespan(_: FastAPI):
     init_db()
+    yield
+
+app = FastAPI(title="Ordo - Digital Life Companion", lifespan=lifespan)
 
 
 @app.get("/health")
