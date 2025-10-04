@@ -1,7 +1,10 @@
-from sqlmodel import Session, SQLModel, create_engine
+from sqlmodel import SQLModel, Session, create_engine
 
-# SQLite-Datei im Projektroot
-engine = create_engine("sqlite:///./ordo.db", connect_args={"check_same_thread": False})
+# SQLite-Datei im Repo-Root
+engine = create_engine(
+    "sqlite:///./ordo.db",
+    connect_args={"check_same_thread": False},
+)
 
 
 def init_db() -> None:
