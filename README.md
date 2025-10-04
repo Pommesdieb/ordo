@@ -1,15 +1,25 @@
-# Ordo – Digitaler Alltagsbegleiter (SSOT)
-## Quickstart
-1) `python3.12 -m venv .venv && source .venv/bin/activate`
-2) `pip install -r requirements.txt`
-3) `uvicorn app.main:app --reload` → http://127.0.0.1:8000/docs
-## Vision
-Eine Single Source of Truth für Tasks, Notizen, Kalender – mit LLM-Assist.
 # Ordo
 
+![CI](https://github.com/Pommesdieb/ordo/actions/workflows/ci.yml/badge.svg)
 
 ## Quickstart
+```bash
+uvicorn app.main:app --reload
 
+# Ordo
 
-## Tests
+![CI](https://github.com/Pommesdieb/ordo/actions/workflows/ci.yml/badge.svg)
+
+## Quickstart
+```bash
+uvicorn app.main:app --reload
+
+PYTHONPATH=. pytest -q -vv
+
+Danach:
+```bash
+pre-commit run --all-files
+git add README.md
+git commit -m "docs: add CI badge and quickstart"
+git push -u origin docs/readme-quickstart
 
