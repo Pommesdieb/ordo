@@ -5,3 +5,11 @@
 3) `uvicorn app.main:app --reload` → http://127.0.0.1:8000/docs
 ## Vision
 Eine Single Source of Truth für Tasks, Notizen, Kalender – mit LLM-Assist.
+# Ordo
+
+
+## Quickstart
+
+
+## Tests
+
