@@ -1,4 +1,5 @@
 from contextlib import asynccontextmanager
+
 from fastapi import Depends, FastAPI, HTTPException
 from sqlmodel import Session, select
 
@@ -8,7 +9,6 @@ from app.models import Task, TaskCreate, TaskRead, TaskUpdate
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
-    # Datenbank beim Start initialisieren
     init_db()
     yield
 
@@ -62,4 +62,4 @@ def delete_task(task_id: int, session: Session = Depends(get_session)):
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
     session.delete(task)
-    session.commi
+    session.commit()
