@@ -207,3 +207,8 @@ marimo/_lsp/
 __marimo__/
 *.db
 .venv/
+.venv/
+.clean/
+.env
+*.db
+__pycache__/

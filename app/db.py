@@ -1,5 +1,4 @@
-from contextlib import contextmanager
-from sqlmodel import SQLModel, Session, create_engine
+from sqlmodel import Session, SQLModel, create_engine
 
 # SQLite-Datei im Projektroot
 engine = create_engine("sqlite:///./ordo.db", connect_args={"check_same_thread": False})

@@ -3,7 +3,11 @@ repos:
     rev: 25.9.0
     hooks:
       - id: black
+        exclude: ^(\.venv|\.clean|\.git|\.github)/
+
   - repo: https://github.com/astral-sh/ruff-pre-commit
     rev: v0.13.3
     hooks:
       - id: ruff
+        args: ["--fix"]
+        exclude: ^(\.venv|\.clean|\.git|\.github)/
