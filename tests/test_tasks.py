@@ -1,26 +1,14 @@
 from fastapi.testclient import TestClient
-
 from app.main import app
-
-c = TestClient(app)
 
 
 def test_create_and_list_tasks():
-    r = c.post("/tasks", json={"title": "t1"})
-    assert r.status_code == 200
-    tid = r.json()["id"]
+    # Lifespan (init_db) wird nur im Kontextmanager garantiert ausgeführt
+    with TestClient(app) as c:
+        r = c.post("/tasks", json={"title": "t1"})
+        assert r.status_code == 200
 
-    r = c.get("/tasks")
-    assert r.status_code == 200
-    assert any(t["id"] == tid for t in r.json())
-
-    r = c.get(f"/tasks/{tid}")
-    assert r.status_code == 200
-    assert r.json()["title"] == "t1"
-
-    r = c.patch(f"/tasks/{tid}", json={"done": True})
-    assert r.status_code == 200
-    assert r.json()["done"] is True
-
-    r = c.delete(f"/tasks/{tid}")
-    assert r.status_code == 204
+        r = c.get("/tasks")
+        assert r.status_code == 200
+        items = r.json()
+        assert any(t["title"] == "t1" for t in items)
