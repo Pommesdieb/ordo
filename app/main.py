@@ -8,8 +8,10 @@ from app.models import Task, TaskCreate, TaskRead, TaskUpdate
 
 @asynccontextmanager
 async def lifespan(_: FastAPI):
+    # Datenbank beim Start initialisieren
     init_db()
     yield
+
 
 app = FastAPI(title="Ordo - Digital Life Companion", lifespan=lifespan)
 
@@ -60,4 +62,4 @@ def delete_task(task_id: int, session: Session = Depends(get_session)):
     if not task:
         raise HTTPException(status_code=404, detail="Task not found")
     session.delete(task)
-    session.commit()
+    session.commi
