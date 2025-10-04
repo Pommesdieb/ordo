@@ -12,7 +12,7 @@ class TaskBase(SQLModel):
 
 class Task(TaskBase, table=True):
     id: Optional[int] = Field(default=None, primary_key=True)
-    created_at: datetime = Field(default_factory=datetime.utcnow)
+    created_at: datetime = Field(default_factory=datetime.now(timezone.utc))
 
 
 class TaskCreate(TaskBase):
