@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+pydantic
+httpx
+pytest
+ruff
+black
+pre-commit
+sqlmodel
