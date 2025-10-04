@@ -7,7 +7,7 @@ from app.models import Task, TaskCreate, TaskRead, TaskUpdate
 app = FastAPI(title="Ordo - Digital Life Companion")
 
 
-@app.on_event("startup")
+Lifespan (asynccontextmanager)
 def on_startup():
     init_db()
 
