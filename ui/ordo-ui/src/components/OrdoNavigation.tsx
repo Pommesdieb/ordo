@@ -21,7 +21,9 @@ export function OrdoNavigation() {
         <img
           src="/logo.png"
           alt="Ordo Logo"
-          className="h-7 w-7 rounded-md dark:brightness-125"
+          className="h-6 w-6 rounded-md"
+          loading="eager"
+          decoding="async"
         />
         <span>Ordo</span>
       </Link>
