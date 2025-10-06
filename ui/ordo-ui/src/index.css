@@ -1,0 +1,72 @@
+@import "tailwindcss";
+
+@layer theme {
+  :root {
+    --color-primary: #B65322;      /* Terracotta */
+    --color-secondary: #F7EBD8;    /* Light Beige */
+    --color-bg: #FAF7F3;           /* Light Mode Background */
+    --color-surface: #FFFFFF;
+    --color-text: #1E1A17;
+
+    --color-success: #4CAF50;
+    --color-warn:    #E3B341;
+    --color-error:   #D64B3E;
+    --color-info:    #3A7EB2;
+
+    --radius: 12px;
+    --shadow-sm: 0 2px 8px rgba(0,0,0,0.05);
+  }
+
+  .dark {
+    --color-primary: #E77C4D;      /* aufgehellt */
+    --color-secondary: #E0D4C2;    /* abgedunkelt */
+    --color-bg: #1E1A17;           /* Dark Mode Background */
+    --color-surface: #26211D;
+    --color-text: #FAF7F3;
+  }
+}
+
+@utility container {
+  margin-inline: auto;
+  padding-inline: 1rem;
+  width: 100%;
+  max-width: 1440px;
+}
+
+/* Basis-Resets + Font */
+@layer base {
+  :root { color-scheme: light dark; }
+  html, body, #root { height: 100%; }
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: "Manrope", system-ui, -apple-system, Segoe UI, Roboto, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol";
+  }
+}
+
+/* Design-Token Mappings → Tailwind Klassen */
+@layer utilities {
+  .bg-app      { background-color: var(--color-bg); }
+  .bg-surface  { background-color: var(--color-surface); }
+  .text-app    { color: var(--color-text); }
+  .text-muted  { color: color-mix(in oklab, var(--color-text) 70%, transparent); }
+
+  .btn        { border-radius: 0.75rem; font-weight: 600; }
+  .btn-sm     { height: 32px; padding: 0 12px; }
+  .btn-md     { height: 40px; padding: 0 16px; }
+  .btn-lg     { height: 48px; padding: 0 20px; }
+
+  .btn-primary { background: var(--color-primary); color: white; }
+  .btn-primary:hover { filter: brightness(1.05); }
+  .btn-secondary { border: 1px solid color-mix(in oklab, var(--color-text) 14%, transparent); background: var(--color-secondary); color: #1E1A17; }
+  .btn-ghost { background: transparent; color: var(--color-text); }
+  .btn-subtle { background: color-mix(in oklab, var(--color-primary) 10%, transparent); color: var(--color-text); }
+
+  .card { background: var(--color-surface); border-radius: var(--radius); box-shadow: var(--shadow-sm); }
+  .focus-ring:focus-visible { outline: 2px solid var(--color-primary); outline-offset: 2px; }
+
+  .badge-success { background: color-mix(in oklab, var(--color-success) 20%, white); color: var(--color-success); }
+  .badge-warn    { background: color-mix(in oklab, var(--color-warn) 20%, white); color: var(--color-warn); }
+  .badge-error   { background: color-mix(in oklab, var(--color-error) 20%, white); color: var(--color-error); }
+  .badge-info    { background: color-mix(in oklab, var(--color-info) 20%, white); color: var(--color-info); }
+}
