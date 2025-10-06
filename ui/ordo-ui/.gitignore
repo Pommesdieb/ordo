@@ -22,3 +22,11 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+# UI build & temp
+dist/
+node_modules/
+*.tsbuildinfo
+.env
+.env.*
+# falls TS versehentlich JS ausgibt:
+src/**/*.js
