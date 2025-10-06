@@ -1,6 +1,5 @@
-
 import { Link, useLocation } from "react-router-dom"
-import { Home, CheckSquare, FileText, Settings } from "lucide-react"
+import { CheckSquare, FileText, Settings } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const links = [
@@ -14,10 +13,20 @@ export function OrdoNavigation() {
 
   return (
     <nav className="flex flex-col gap-2 p-4 border-r bg-[var(--color-bg-light)] dark:bg-[var(--color-bg-dark)]">
-      <Link to="/" className="flex items-center gap-2 mb-6 text-xl font-semibold text-[var(--color-primary)]">
-        <Home size={22} />
-        Ordo
+      {/* 🔸 Logo + Titel */}
+      <Link
+        to="/"
+        className="flex items-center gap-2 mb-6 text-xl font-semibold text-[var(--color-primary)] hover:opacity-90 transition-opacity"
+      >
+        <img
+          src="/logo.png"
+          alt="Ordo Logo"
+          className="h-7 w-7 rounded-md dark:brightness-125"
+        />
+        <span>Ordo</span>
       </Link>
+
+      {/* 🔸 Navigation Links */}
       {links.map(({ to, icon: Icon, label }) => (
         <Link
           key={to}
