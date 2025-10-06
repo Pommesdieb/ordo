@@ -1,26 +1,29 @@
-import { Separator } from "@/components/ui/separator";
-import { Button } from "@/components/ui/button";
+import { ReactNode } from "react";
+import { Menu } from "lucide-react";
 
-export default function AppShell({ children }: { children: React.ReactNode }) {
+export function AppShell({ children }: { children: ReactNode }) {
   return (
-    <div className="min-h-screen grid md:grid-cols-[220px_1fr]">
-      <aside className="p-4 border-r">
-        <div className="flex items-center justify-between">
-          <h1 className="text-xl font-semibold">Ordo</h1>
+    <div className="min-h-dvh bg-app text-app">
+      <header className="sticky top-0 z-[900] bg-surface/90 backdrop-blur border-b">
+        <div className="container flex items-center gap-3 h-14">
+          <img src="/logo.png" alt="Ordo" className="h-7 w-7" />
+          <span className="font-semibold">Ordo</span>
+          <div className="ml-auto flex items-center gap-2">
+            <button className="btn btn-ghost"><Menu className="h-5 w-5" /></button>
+          </div>
         </div>
-        <Separator className="my-3" />
-        <nav className="space-y-2 text-sm">
-          <a href="/" className="block hover:underline">Dashboard</a>
-          <a href="/tasks" className="block hover:underline">Tasks</a>
-        </nav>
-      </aside>
-      <main className="p-6">
-        <header className="mb-6 flex items-center justify-between">
-          <div className="text-sm text-muted-foreground">Digital Life Companion</div>
-          <Button asChild variant="secondary"><a href="/tasks">Neue Task</a></Button>
-        </header>
-        {children}
-      </main>
+      </header>
+
+      <div className="container grid lg:grid-cols-[260px_1fr] gap-6 py-6">
+        <aside className="hidden lg:block">
+          <nav className="card p-3">
+            <a className="block px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5" href="/tasks">Tasks</a>
+            <a className="block px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5" href="/notes">Notes</a>
+            <a className="block px-3 py-2 rounded hover:bg-black/5 dark:hover:bg-white/5" href="/settings">Settings</a>
+          </nav>
+        </aside>
+        <main>{children}</main>
+      </div>
     </div>
   );
 }
